@@ -10,14 +10,14 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Level2 {
+public class Level {
 	private int x,y; //location attributes
 	private Image img2; 	
 	private AffineTransform tx;
 		
 	//default constructor
-	public Level2() {
-		img2 = getImage("/imgs/level2.png");  //load the image
+	public Level() {
+		img2 = getImage("/imgs/level1.png");  //load the image
 		tx = AffineTransform.getTranslateInstance(x,y);
 		//initialize the location of the image, use your variables
 		x = 0;
@@ -26,7 +26,7 @@ public class Level2 {
 		
 	//constructor that allows specifying the file name of the image
 	//sets fileName of the image to use
-	public Level2(String fileName) {
+	public Level(String fileName) {
 		img2 = getImage("/imgs/" + fileName);
 		tx = AffineTransform.getTranslateInstance(x,y);
 		init(x,y);
@@ -60,7 +60,7 @@ public class Level2 {
 	private Image getImage(String path) {
 		Image tempImage = null;
 		try {
-			URL imageURL = Level2.class.getResource(path);
+			URL imageURL = Level.class.getResource(path);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();
