@@ -43,7 +43,7 @@ public class Player{
 		Image tempImage = null;
 		try {
 			URL imageURL = Player.class.getResource(path);
-			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
+			tempImage = Toolkit.getDefaultToolkit().getImage("phineas.png");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

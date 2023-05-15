@@ -29,7 +29,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public Frame() {
 		JFrame f = new JFrame("Wheres Perry");
-		f.setSize(new Dimension(900, 600));
+		f.setSize(new Dimension(1000, 1000));
 		f.setBackground(Color.blue);
 		f.add(this);
 		f.setResizable(false);
