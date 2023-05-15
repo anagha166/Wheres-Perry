@@ -16,8 +16,6 @@ import javax.swing.Timer;
 
 import imgs.Background;
 import imgs.Level;
-import imgs.Level2;
-import imgs.Level3;
 import imgs.LevelBackground;
 import imgs.Buttons;
 import imgs.RestartMenu;
@@ -40,6 +38,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean thirdStart = false;
 	
 	RestartMenu restartMenu = new RestartMenu();
+	boolean canRestart = false;
+	Buttons restart = new Buttons("restart.png",300 ,320);
+	Buttons menu = new Buttons("menu.png", 420, 320);
+	
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
@@ -63,6 +65,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			back.paint(g);
 			third.paint(g);
 			pause.paint(g);
+		}
+		if (canRestart) {
+			restartMenu.paint(g);
+			menu.paint(g);
+			restart.paint(g);
 		}
 	}
 	
@@ -117,7 +124,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(three.hit(arg0)) {
 			thirdStart = true;
 		}
-		
+		if(pause.hit(arg0)) {
+			canRestart = true;
+		}
 	}
 
 	@Override

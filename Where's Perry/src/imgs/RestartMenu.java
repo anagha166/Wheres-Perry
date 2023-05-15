@@ -20,8 +20,8 @@ public class RestartMenu {
 		img2 = getImage("/imgs/blueprint.png");  //load the image
 		tx = AffineTransform.getTranslateInstance(x,y);
 		//initialize the location of the image, use your variables
-		x = 0;
-		y = 0;
+		x = 250;
+		y = 150;
 	}
 		
 	//constructor that allows specifying the file name of the image
