@@ -84,8 +84,10 @@ public class Buttons{
 				
 			//changePicture("/imgs/santa.png");
 			//instead of changing level picture, call to another class to pull the correct level
-			System.out.println("Pressed Level");
+			System.out.println("Pressed Button successfully");
 			return true;
+		}else {
+			System.out.println("Unsuccessful Press");
 		}
 			
 			return false;

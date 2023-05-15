@@ -16,7 +16,6 @@ import javax.swing.Timer;
 
 import imgs.Background;
 import imgs.Level;
-import imgs.LevelBackground;
 import imgs.Buttons;
 import imgs.RestartMenu;
 
@@ -24,12 +23,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	//Player p = new Player();
 	Background homepage = new Background();
+	boolean home = false;
 	Buttons one = new Buttons("level1logo.png", 130, 190);
 	Buttons two = new Buttons("level2logo.png", 230, 190);
 	Buttons three = new Buttons("level3logo.png", 520, 190);
 	Buttons pause = new Buttons("pause.png", 730, 0);
 	
-	LevelBackground back = new LevelBackground();
+	Background back = new Background("background.png");
 	Level first = new Level("level1.png");
 	boolean firstStart = false;
 	Level second = new Level("level2.png");
