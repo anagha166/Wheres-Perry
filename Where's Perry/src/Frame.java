@@ -127,6 +127,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(pause.hit(arg0)) {
 			canRestart = true;
 		}
+		
 	}
 
 	@Override
