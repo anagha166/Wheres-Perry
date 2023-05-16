@@ -45,7 +45,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
-		//p.paint(g);
+		p.paint(g);
 		homepage.paint(g);
 		one.paint(g);
 		two.paint(g);
