@@ -45,7 +45,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
-		p.paint(g);
+		
 		homepage.paint(g);
 		one.paint(g);
 		two.paint(g);
@@ -55,6 +55,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			back.paint(g);
 			first.paint(g);
 			pause.paint(g);
+			p.paint(g);
 		}
 		if (secondStart) {
 			back.paint(g);
@@ -92,7 +93,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		
-		
+		p.getclr();
+		//p.GetPixelColor(100, 200);
 		
 	}
 	
