@@ -21,7 +21,7 @@ import imgs.RestartMenu;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	//Player p = new Player();
+	Player p = new Player();
 	Background homepage = new Background();
 	boolean home = false;
 	Buttons one = new Buttons("level1logo.png", 130, 190);
