@@ -91,6 +91,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
+		
+		
+		
 	}
 	
 	
@@ -107,7 +110,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
+	public void mouseExited(MouseEvent arig0) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -142,15 +145,36 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		repaint();
 	}
 
-	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		System.out.println(arg0.getKeyCode());
+		if (arg0.getKeyCode() == 39) { 
+			p.moveLeft();
+		}
+		if (arg0.getKeyCode() == 37) { 
+			p.moveRight();
+		}
+		if (arg0.getKeyCode() == 38) { 
+			System.out.println("jump");
+			p.jump();
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+		
+		p.stop();
+		/*
+		if (arg0.getKeyCode() == 39) { 
+			p.stop();
+		}
+		if (arg0.getKeyCode() == 37) { 
+			p.stop();
+		}
+		
+		*/
+		
 		
 	}
 
