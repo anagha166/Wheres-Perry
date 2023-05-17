@@ -1,4 +1,5 @@
 package imgs;
+import java.awt.image.BufferedImage;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,12 +9,17 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.net.URL;
+
+import javax.imageio.ImageIO;
 
 public class Level {
 	private int x,y; //location attributes
 	private Image img2; 	
 	private AffineTransform tx;
+	private BufferedImage color;
+ 
 		
 	//default constructor
 	public Level() {
@@ -45,11 +51,35 @@ public class Level {
 		g2.drawImage(img2, tx, null);
 
 	}
+	
+	public boolean getclr(int x, int y) {
+		boolean check = false;
+	
+		int clr = color.getRGB(x, y);
+        int red =   (clr & 0x00ff0000) >> 16;
+        int green = (clr & 0x0000ff00) >> 8;
+        int blue =   clr & 0x000000ff;
+		if(red == 51 && green == 30 && blue == 22) {
+			//return true;
+			//System.out.println("yas");
+			check = true;
+		}
+
+		/*
+		System.out.println("Red Color value = " + red);
+        System.out.println("Green Color value = " + green);
+        System.out.println("Blue Color value = " + blue);
+        */
+        
+		return check;
+		
+	}
 		
 	//update the picture variable location
 	private void update() {
 		tx.setToTranslation(x, y);
-		tx.scale(8, 6);
+		//tx.scale(8, 6);
+		tx.scale(1,1);
 	}
 		
 	private void init(double a, double b) {
@@ -61,6 +91,7 @@ public class Level {
 		Image tempImage = null;
 		try {
 			URL imageURL = Level.class.getResource(path);
+			color = ImageIO.read(imageURL);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();

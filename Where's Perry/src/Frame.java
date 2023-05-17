@@ -34,7 +34,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	boolean firstStart = false;
 	Level second = new Level("level2.png");
 	boolean secondStart = false;
-	Level third = new Level("level3.png");
+	Level third = new Level("test.png");
 	boolean thirdStart = false;
 	
 	RestartMenu restartMenu = new RestartMenu();
@@ -61,17 +61,52 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			back.paint(g);
 			second.paint(g);
 			pause.paint(g);
+			p.paint(g);
 		}
 		if (thirdStart) {
 			back.paint(g);
 			third.paint(g);
 			pause.paint(g);
+			p.paint(g);
 		}
 		if (canRestart) {
 			restartMenu.paint(g);
 			menu.paint(g);
 			restart.paint(g);
 		}
+		//System.out.println(p.getY());
+		//System.out.println(third.getclr(p.getX() + 30,p.getY()+90));
+		//System.out.println(homepage.getclr(p.getX()+10,p.getY()/100));
+		
+		
+		if(third.getclr(p.getX() + 30,p.getY()+70) == true) {
+			System.out.println("yas");
+			p.setFlor(p.getY());
+			//p.setFlor(p.getY());
+		} else {
+			p.setFlor(700);
+		}
+		
+		/*
+		if(third.getclr(p.getX()+20,p.getY()+70) == true) {
+			p.setLwall(p.getX());
+	
+		} 
+		
+		/*
+		
+		if(third.getclr(p.getX()+30,p.getY()+70) == true) {
+			p.setRwall(p.getX());
+			
+		} \\*/
+		
+		
+	
+		
+		
+		
+		
+		
 	}
 	
 	
@@ -81,7 +116,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	public Frame() {
 		JFrame f = new JFrame("Wheres Perry");
-		f.setSize(new Dimension(800, 600));
+		f.setSize(new Dimension(800, 800));
 		f.setBackground(Color.white);
 		f.add(this);
 		f.setResizable(false);
@@ -93,7 +128,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		
-		p.getclr();
+		//third.getclr(40, 500);
+		
+		//System.out.println("yas");
+		//p.setFlor(300);
+		
+		//p.getclr();
+		//homepage.getclr(0,1);
+		
+		
+		
+		
+		
+		
 		//p.GetPixelColor(100, 200);
 		
 	}

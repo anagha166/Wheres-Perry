@@ -7,13 +7,19 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 import java.net.URL;
+
+import javax.imageio.ImageIO;
+
 
 public class Background {
 	
 	private int x,y; //location attributes
 	private Image img; 	
 	private AffineTransform tx;
+	private BufferedImage color;
+	private int clr; 
 		
 	//default constructor
 	public Background() {
@@ -43,24 +49,56 @@ public class Background {
 		Graphics2D g2 = (Graphics2D) g;
 		update();
 		g2.drawImage(img, tx, null);
+		
 
 	}
 		
 	//update the picture variable location
 	private void update() {
 		tx.setToTranslation(x, y);
-		tx.scale(8,6);
+		tx.scale(8,9);
+		
+		
+
 	}
+	
+	/*
+	public boolean getclr(int x, int y) {
+		boolean check = false;
+	
+		int clr = color.getRGB(x, y);
+        int red =   (clr & 0x00ff0000) >> 16;
+        int green = (clr & 0x0000ff00) >> 8;
+        int blue =   clr & 0x000000ff;
+        System.out.println("Red Color value = " + red);
+        System.out.println("Green Color value = " + green);
+        System.out.println("Blue Color value = " + blue);
+		if(red == 61 && blue == 32 && green == 6) {
+			//return true;
+			//System.out.println("yas");
+			check = true;
+		}
+
+		
+		System.out.println("Red Color value = " + red);
+        System.out.println("Green Color value = " + green);
+        System.out.println("Blue Color value = " + blue);
+        
+		return check;
+	}
+	*/
 		
 	private void init(double a, double b) {
 		tx.setToTranslation(a, b);
 		tx.scale(8,6);
+		
 	}
 
 	private Image getImage(String path) {
 		Image tempImage = null;
 		try {
 			URL imageURL = Background.class.getResource(path);
+			color = ImageIO.read(imageURL);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();

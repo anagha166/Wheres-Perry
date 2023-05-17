@@ -18,20 +18,21 @@ import javax.imageio.ImageIO;
 public class Player{
 	private Image img; 	
 	private AffineTransform tx;
-	private double x, y;
+	private int x,y;
 	private double vx, vy;
-	private int floor= 300;
-	private double gravity = 0.05;
-	private double size;
-	private BufferedImage color;
-	private int clr; 
+	private int floor= 700;
+	private int Lwall= 0;
+	private int Rwall= 700;
+	private double gravity = 0.1;
 	
 
 	public Player() {
 		img = getImage("/imgs/Phineas.png"); //load the image for Tree
+		x = 0;
+		y= 0;
+		tx = AffineTransform.getTranslateInstance(x, y); 
 		
-		tx = AffineTransform.getTranslateInstance(x, y);
-		init(x, y); 
+		
 		
 	
 	}
@@ -47,106 +48,99 @@ public class Player{
 		g2.drawImage(img, tx, null);
 		update();
 		
-		g.drawRect((int) x, (int) y, 30, 10);
+		g.drawRect((int) x+30, (int) 60, 10, 10);
 	}
 	
 	private void init(double a, double b) {
-		tx.setToTranslation(a, b);
-		tx.scale(.5, .5);
-		size = a;
+		tx.setToTranslation(a,b);
+		tx.scale(.05, .05);
+	}
+	
+	
+	
+	public void stop(){
+		vx = 0;
+			
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public void moveRight(){
+		vx = -1.5;
+	
+		img = getImage("/imgs/Phinflip.png");
 	}
 	
 	public void moveLeft(){
-		//x += speed;
-		vx = 1;
-		x += 10;
+		vx = 3;
 		img = getImage("/imgs/Phineas.png");
 		
 		
 	}
 	
-	public void stop(){
-		//x += speed;
-		vx = 0;
-			
-	}
-	
-	
-	public void moveRight(){
-		//x-= speed;
-		vx = -1;
-	
-		img = getImage("/imgs/Phinflip.png");
-		//tx = AffineTransform.getTranslateInstance(x, y);
-	}
-	
 	
 	public void jump() {
-		if(y == floor-1) {
-			vy = -3;
+		if(y == floor) {
+			vy = -5;
 		}
+		
 
 	}
 	
-	public int getclr() {
-		clr = color.getRGB(10,10); 
-		System.out.println("i "+ clr);
-		return clr;
+	public void setFlor(int val) {
+		floor = val;
 	}
 	
+	public void setLwall(int val) {
+		Lwall = val;
+	}
+	
+	public void setRwall(int val) {
+		Rwall = val;
+	}	
 	
 	public void update() {
+		tx = AffineTransform.getTranslateInstance(x, y);
+		tx.scale(0.75,0.75);
 		x += vx;
 		y += vy;
 		vy += gravity;
-		tx = AffineTransform.getTranslateInstance(x, y);
-		if (y>= floor) {
-			y = floor-1;
+		
+		
+		
+		if (y >= floor) {
+			y = floor;
+			vy =0;
+		} else {
+			vy+= gravity;
+		}
+		
+		if(x <= Lwall) {
+			x = Lwall;
+		}
+		if(x >= Rwall) {
+			x = Rwall;
 		}
 		
 		
-		
 	}
-	/*
-	
-	public void GetPixelColor (int x,int y) {
-		 File file = new File("/imgs/background.png");
-		 BufferedImage image = null;
-			try {
-				image = ImageIO.read(file);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        // Getting pixel color by position x and y 
-	        int clr = image.getRGB(x, y);
-	       // int red =   (clr & 0x00ff0000) >> 16;
-	       // int green = (clr & 0x0000ff00) >> 8;
-	      //  int blue =   clr & 0x000000ff;
-	        System.out.println("try detect" + clr);
-	        //System.out.println("Red Color value = " + red);
-	      //  System.out.println("Green Color value = " + green);
-	      //  System.out.println("Blue Color value = " + blue);
-	       
-	       
-	    
-	}
-	*/
 	
 	
 	public double getHeight() {
 		return y;
 	}		
 	
-	public double getSize() {
-		return size;
-	}
 	
 	private Image getImage(String path) {
 		Image tempImage = null;
 		try {
 			URL imageURL = Player.class.getResource(path);
-			color = ImageIO.read(imageURL);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);//"phineas.png");
 		} catch (Exception e) {
 			e.printStackTrace();
